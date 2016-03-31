@@ -1924,33 +1924,32 @@ beforeChatMessage: function(src, message, chan) {
             return;
         }
     }
-    
-    //Special donator
-	if (!sys.dbRegistered(src)) {
-		sys.stopEvent();
-		sys.sendMessage(src, "You are currently unregistered, and cannot talk.");
-		return;
-	}
     if (sys.auth(src) == 0) {
         sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b>" + sys.name(src) + ": </b></span>" + message.replace("&", "&amp;").replace("<", "&lt;"),  channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
         return;
     }
-	if (sys.auth(src) == 1) {
-		sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><i><font color=cyan>{Moderator}</font></i> " + sys.name(src) + ": </b></span>" + message.replace("&", "&amp;").replace("<", "&lt;"),  channel);
+    if (sys.auth(src) == 0) {
+        sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b>" + sys.name(src) + ": </b></span>" + message.replace("&", "&amp;").replace("<", "&lt;"),  channel);
+        sys.stopEvent();
+        this.afterChatMessage(src, message, channel);
+        return;
+    }
+    if (sys.auth(src) == 1) {
+	sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><i><font color=cyan>{Moderator}</font></i> " + sys.name(src) + ": </b></span>" + message.replace("&", "&amp;").replace("<", "&lt;"),  channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
         return;
 	}
-	if (sys.auth(src) == 2) {
-		sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><i><font color=gold>{Administrator}</font></i> " + sys.name(src) + ": </b></span>" + message.replace("&", "&amp;").replace("<", "&lt;"),  channel);
+    if (sys.auth(src) == 2) {
+	sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><i><font color=gold>{Administrator}</font></i> " + sys.name(src) + ": </b></span>" + message.replace("&", "&amp;").replace("<", "&lt;"),  channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
         return;
 	}
-	if (sys.auth(src) == 3) {
-		sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><i><font color=red>{Owner}</font></i> " + sys.name(src) + ": </b></span>" + message.replace("&", "&amp;").replace("<", "&lt;"),  channel);
+    if (sys.auth(src) == 3) {
+	sys.sendHtmlAll("<span style='color: " + sys.getColor(src) + "'><timestamp/><b><i><font color=red>{Owner}</font></i> " + sys.name(src) + ": </b></span>" + message.replace("&", "&amp;").replace("<", "&lt;"),  channel);
         sys.stopEvent();
         this.afterChatMessage(src, message, channel);
         return;
