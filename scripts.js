@@ -2,7 +2,7 @@
 // These scripts will only work on 2.0.00 or newer.
 // As per edits for boilerplate
 var Config = {
-    base_url: "undefined",
+    base_url: "https://raw.githubusercontent.com/Exonode/Pokemon-Scripts/master/scripts.js",
     dataDir: "scriptdata/",
     bot: "Dratini",
     kickbot: "Blaziken",
